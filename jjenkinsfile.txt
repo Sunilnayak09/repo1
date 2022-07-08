@@ -11,9 +11,9 @@ pipeline{
 				}
 			}
 			stage("main-branch-stage"){
-					when (BRANCH_NAME != 'master') {
+					when (BRANCH_NAME != 'main') {
 					steps{
-						echo "Only on master branch."
+						echo "Only on main branch."
 			}
 			}
 			}
