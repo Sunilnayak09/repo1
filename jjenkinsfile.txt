@@ -12,11 +12,13 @@ pipeline{
 			}
 			stage("main-branch-stage"){
 					when (BRANCH_NAME != 'master') {
-        echo 'Only on master branch.'
-    }
+						echo 'Only on master branch.'
+			}
+			}
 			stage("b1-branch-stage"){
 					when (BRANCH_NAME != 'b1') {
-        echo 'Only on b1 branch.'
-    }
+							echo 'Only on b1 branch.'
+						}
+			}
 			}
 			}
