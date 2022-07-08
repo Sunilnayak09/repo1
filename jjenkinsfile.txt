@@ -11,18 +11,20 @@ pipeline{
 				}
 			}
 			stage("main-branch-stage"){
-					when (BRANCH_NAME != 'main') {
+					when {
+						branch 'main'
+					}
 					steps{
 						echo "Only on main branch."
 			}
 			}
-			}
 			stage("b1-branch-stage"){
-					when (BRANCH_NAME != 'b1') {
+					when  {
+							branch 'b1'
+							}
 					steps{
 							echo "Only on b1 branch."
-						}
-						}
+						}		
 			}
 			}
 			}
