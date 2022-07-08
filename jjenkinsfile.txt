@@ -1,0 +1,30 @@
+pipeline{
+		agent any
+		parameters{
+			string (name:'abc')
+			choice (name:  'branches', choices: ['main', 'b1', 'b2'], description: 'git branches')
+		}
+		stages{
+			stage("test1"){
+				steps{
+					git branch: "${branches}", credentialsId: 'github', url: 'https://github.com/Sunilnayak09/repo1.git'
+				}
+			}
+			stage("main-branch-stage"){
+					when {
+						branch 'main'
+						}
+					steps {
+						echo 'run this stage - ony if the branch = main branch'
+						}
+					}
+			stage("b1-branch-stage"){
+					when {
+						branch 'b1'
+						}
+					steps {
+						echo 'run this stage - ony if the branch = b1 branch'
+						}
+					}
+			}
+			}
