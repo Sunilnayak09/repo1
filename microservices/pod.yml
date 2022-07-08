@@ -1,8 +1,0 @@
-[C[DapiVersion: v1
-kind: pod
-metadata:
-    name: pd1
-spec:
-    containers:
-    - name: c1
-      image: image123
