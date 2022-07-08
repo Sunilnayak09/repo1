@@ -11,20 +11,12 @@ pipeline{
 				}
 			}
 			stage("main-branch-stage"){
-					when {
-						branch 'main'
-						}
-					steps {
-						echo 'run this stage - ony if the branch = main branch'
-						}
-					}
+					when (BRANCH_NAME != 'master') {
+        echo 'Only on master branch.'
+    }
 			stage("b1-branch-stage"){
-					when {
-						branch 'b1'
-						}
-					steps {
-						echo 'run this stage - ony if the branch = b1 branch'
-						}
-					}
+					when (BRANCH_NAME != 'b1') {
+        echo 'Only on b1 branch.'
+    }
 			}
 			}
