@@ -2,7 +2,7 @@ pipeline{
 		agent any
 		parameters{
 			string (name:'abc')
-			choice (name:  'branches', choices: ['main', 'b1', 'b2'], description: 'git branches')
+			choice (name:  'branches', choices: ['main', 'b1', 'b2'], description: 'git branches',name 'name')
 		}
 		stages{
 			stage("test1"){
@@ -12,7 +12,7 @@ pipeline{
 			}
 			stage("main-branch-stage"){
 					when {
-						branch 'main'
+						expression { params.name == 'main' }
 					}
 					steps{
 						echo "Only on main branch."
@@ -20,7 +20,7 @@ pipeline{
 			}
 			stage("b1-branch-stage"){
 					when  {
-							branch 'b1'
+							expression { params.name == 'b1' }
 							}
 					steps{
 							echo "Only on b1 branch."
